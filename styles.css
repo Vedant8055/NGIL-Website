@@ -2119,3 +2119,315 @@ body.nav-open{overflow:hidden;touch-action:none}
   body.kids-playful .nav-rain,
   body.kids-playful .hero-cartoon{display:none}
 }
+
+/* Playschool introduction — peach frame, white sheet, wooden-toy hero */
+body.kids-playful{
+  background:#f6b27a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 980'%3E%3Cg fill='none' stroke='%23fff' stroke-width='10' stroke-linecap='round'%3E%3Cpath d='M36 150c48-58 8-92 64-46'/%3E%3Cpath d='M24 210c36 8 58-28 28-48'/%3E%3Cpath d='M70 620c70 10 48 78-18 86'/%3E%3Cpath d='M1320 210c46 18 78-36 28-64'/%3E%3Cpath d='M1348 250c-30 24-8 58 28 42'/%3E%3Cpath d='M1260 760c-56 24-24 86 40 62'/%3E%3C/g%3E%3Ccircle cx='86' cy='78' r='18' fill='none' stroke='%23fff' stroke-width='8'/%3E%3Ccircle cx='1336' cy='118' r='24' fill='none' stroke='%23fff' stroke-width='8'/%3E%3C/svg%3E") no-repeat top center / 100% 1100px !important;
+}
+body.kids-playful .announcement{
+  margin:22px 28px 0;
+  height:34px;
+  background:#fff !important;
+  color:#8a8178;
+  border-radius:22px 22px 0 0;
+  font-family:var(--body);
+  letter-spacing:0;
+  font-size:13px;
+  font-weight:700;
+  gap:16px;
+  justify-content:flex-start;
+  padding:0 28px;
+}
+body.kids-playful .announcement a{
+  margin:0;
+  color:#6d655e;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0;
+}
+body.kids-playful .site-header,
+body.kids-playful .site-header.scrolled{
+  margin:0 28px;
+  height:auto !important;
+  min-height:74px !important;
+  background:#fff !important;
+  box-shadow:none !important;
+  border-bottom:1px solid rgba(36,52,71,.06);
+  padding:8px 22px 8px 26px !important;
+  gap:12px;
+}
+body.kids-playful .nav-rain{display:none !important}
+body.kids-playful .play-mark{
+  display:flex;
+  flex-direction:column;
+  font-family:'Caveat',cursive;
+  font-size:48px;
+  line-height:.72;
+  color:#24304a;
+  font-weight:700;
+}
+body.kids-playful .play-mark small{
+  font-family:'Caveat',cursive;
+  font-size:18px;
+  letter-spacing:.02em;
+  font-weight:700;
+  color:#24304a;
+}
+body.kids-playful .site-header,
+body.kids-playful .site-header.scrolled{flex-wrap:nowrap !important}
+body.kids-playful .brand{order:1 !important}
+body.kids-playful .desktop-nav{order:2 !important;flex:1 1 auto !important}
+body.kids-playful .nav-cta{order:3 !important;margin-left:0 !important}
+body.kids-playful .desktop-nav{
+  position:static;
+  transform:none;
+  flex:1;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:2px 8px;
+  min-width:0;
+}
+body.kids-playful .desktop-nav a{
+  color:#2c3444 !important;
+  font-family:var(--body) !important;
+  font-size:15px !important;
+  font-weight:700 !important;
+  padding:8px 9px !important;
+  background:transparent !important;
+}
+body.kids-playful .desktop-nav a:before{display:none !important}
+body.kids-playful .desktop-nav a:hover,
+body.kids-playful .desktop-nav a:focus-visible,
+body.kids-playful .desktop-nav a.is-active{color:#e07a32 !important}
+body.kids-playful .nav-cta{
+  background:transparent !important;
+  color:#2c3444 !important;
+  border:0 !important;
+  box-shadow:none !important;
+  font-family:var(--body) !important;
+  font-size:15px !important;
+  font-weight:800 !important;
+  padding:8px 0 !important;
+}
+body.kids-playful .nav-cta span{color:#2c3444;font-size:16px}
+body.kids-playful .impact-ribbon{flex-wrap:wrap}
+body.kids-playful .ribbon-status{white-space:normal;max-width:240px}
+body.kids-playful .toy-hero,
+body.kids-playful .toy-picks{margin:0 28px;background:#fff}
+body.kids-playful .toy-play{
+  margin:0 28px 26px;
+  background:#fff;
+  border-radius:0 0 22px 22px;
+}
+.toy-stage{position:relative;height:auto;margin:0 18px 8px;overflow:visible}
+.toy-sky{position:absolute;inset:0;width:100%;height:100%;display:block}
+.toy-cast{position:absolute;inset:0;z-index:1}
+.toy{position:absolute;overflow:visible;filter:drop-shadow(0 12px 8px rgba(18,58,110,.18))}
+.toy-tree{left:1%;bottom:30%;width:140px}
+.toy-mount{left:16%;bottom:26%;width:min(460px,48%)}
+.toy-owl{left:31%;bottom:58%;width:92px;animation:toy-bob 4.4s ease-in-out infinite}
+.toy-elephant{left:4%;bottom:8%;width:230px;z-index:2}
+.toy-whale{left:26%;bottom:7%;width:210px;z-index:2}
+.toy-rabbit{left:44%;bottom:16%;width:120px;z-index:2}
+.toy-birds{left:52%;bottom:32%;width:124px;z-index:2}
+.toy-rainbow{left:0;bottom:7%;width:170px;z-index:3}
+.toy-hero-copy{
+  position:absolute;z-index:4;right:4.5%;top:50%;transform:translateY(-50%);
+  width:min(460px,42%);color:#fff;text-align:left;
+}
+.toy-kicker{
+  margin:0 0 12px;font-size:12px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,255,255,.92);
+}
+.toy-hero-copy h1{
+  margin:0 0 10px;font-family:var(--serif);font-weight:400;
+  font-size:clamp(28px,2.6vw,42px);line-height:1.05;letter-spacing:-.03em;color:#fff;
+}
+.toy-emphasis{
+  margin:0 0 12px;font-family:var(--serif);font-size:clamp(22px,2vw,30px);
+  line-height:1.15;color:#fff;
+}
+.toy-hero-copy p{margin:0;font-size:15px;line-height:1.45;color:rgba(255,255,255,.94)}
+.toy-shop{
+  display:inline-flex;align-items:center;justify-content:center;min-width:124px;
+  padding:10px 22px;border:1.5px solid #fff;border-radius:999px;color:#fff;
+  font-size:15px;font-weight:800;background:transparent;
+}
+.toy-shop:hover{background:#fff;color:#2a6eae}
+.toy-picks{padding:42px 7% 8px;text-align:center}
+.toy-picks h2,.toy-play-card h2{
+  font-family:var(--serif);font-weight:400;color:#243047;letter-spacing:-.03em;
+}
+.toy-picks h2{font-size:clamp(34px,3.2vw,46px);margin:0 0 26px}
+.toy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.toy-card{display:flex;flex-direction:column;align-items:center;color:#243047}
+.toy-swatch{display:grid;place-items:center;width:100%;aspect-ratio:1;border-radius:4px;margin-bottom:14px}
+.toy-swatch svg{width:76%;height:76%}
+.swatch-rose{background:#f3b4c6}
+.swatch-sky{background:#79b4ea}
+.swatch-sun{background:#ef9d55}
+.swatch-sand{background:#f4c7a2}
+.toy-card strong{font-family:var(--serif);font-weight:400;font-size:26px}
+.toy-card em{font-style:normal;color:#8d8680;font-size:15px;margin-top:3px}
+.toy-play{display:grid;grid-template-columns:1.2fr .85fr 1.2fr;gap:16px;padding:34px 18px 42px;align-items:stretch}
+.toy-play-side{background:#f6b6c9;min-height:250px;display:grid;place-items:center;overflow:hidden}
+.toy-play-side-b{background:#f3a8c2}
+.toy-play-side svg{width:86%;height:auto}
+.toy-play-card{background:#e7c48a;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px 16px}
+.toy-play-card h2{font-size:clamp(30px,2.8vw,42px);line-height:1.05;max-width:260px;margin:0 0 16px}
+.toy-play-card a{font-size:16px;font-weight:700;border-bottom:1px solid #243047;padding-bottom:2px}
+@keyframes toy-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(prefers-reduced-motion:reduce){.toy-owl{animation:none}}
+@media(max-width:1100px){
+  body.kids-playful .site-header,
+  body.kids-playful .site-header.scrolled{flex-wrap:wrap !important}
+  body.kids-playful .desktop-nav{order:3 !important;flex:1 0 100% !important}
+  body.kids-playful .nav-cta{order:2 !important}
+  body.kids-playful .desktop-nav a{font-size:13px !important;padding:8px 6px !important}
+  .toy-rabbit,.toy-birds{display:none}
+  .toy-hero-copy{width:min(380px,40%)}
+  .toy-hero-copy h1{font-size:30px}
+}
+@media(max-width:850px){
+  body.kids-playful .announcement,
+  body.kids-playful .site-header,
+  body.kids-playful .site-header.scrolled,
+  body.kids-playful .toy-hero,
+  body.kids-playful .toy-picks,
+  body.kids-playful .toy-play{margin-left:10px;margin-right:10px}
+  body.kids-playful .site-header,
+  body.kids-playful .site-header.scrolled{height:72px !important;min-height:72px !important}
+  body.kids-playful .brand{margin-right:auto}
+  body.kids-playful .menu-toggle{order:4 !important;margin-left:auto;border-color:rgba(36,52,71,.25) !important;background:#fff}
+  body.kids-playful .menu-toggle span{background:#243447 !important}
+  body.kids-playful .mobile-menu{top:106px;left:10px;right:10px;background:#fff !important}
+  body.kids-playful .mobile-menu a{color:#243447 !important;border-bottom-color:rgba(36,52,71,.1) !important}
+  body.kids-playful .play-mark{font-size:40px}
+  .toy-stage{height:auto;margin:0 10px}
+  .toy-hero-copy{right:4%;top:auto;bottom:7%;transform:none;width:min(210px,48%)}
+  .toy-hero-copy h1{font-size:28px}
+  .toy-hero-copy p{font-size:13px}
+  .toy-mount{width:62%;left:18%}
+  .toy-owl{bottom:52%;left:36%;width:78px}
+  .toy-elephant{width:150px}
+  .toy-whale{width:140px;left:36%}
+  .toy-grid{grid-template-columns:1fr 1fr;gap:16px}
+  .toy-card strong{font-size:22px}
+  .toy-play{grid-template-columns:1fr;padding-bottom:28px}
+  .toy-play-side{min-height:200px}
+}
+
+/* Photo introduction — wooden-toy photographs */
+.toy-stage{
+  height:auto;
+  min-height:0;
+  background:#4aa3e4;
+}
+.toy-hero-photo{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
+.toy-stage::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(90deg, transparent 46%, rgba(36,110,176,.25) 70%, rgba(24,86,150,.62) 100%);
+}
+.toy-card img{
+  display:block;
+  width:100%;
+  aspect-ratio:1;
+  object-fit:cover;
+  border-radius:4px;
+  margin-bottom:14px;
+}
+.makers-row{
+  display:grid;
+  grid-template-columns:minmax(160px,1fr) minmax(0,min(1100px,72%));
+  gap:18px;
+  align-items:stretch;
+}
+.makers-play{position:relative;min-width:0;min-height:100%}
+.makers-play svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.makers-frame{display:block;width:100%;margin:0}
+.scene-live{position:relative;display:block;border-radius:8px;overflow:hidden}
+.makers-frame img,.scene-motion{display:block;width:100%;height:auto;border-radius:8px}
+.scene-motion{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.win{transform-box:fill-box;transform-origin:center;animation:makers-bob 5.4s ease-in-out infinite}
+.win-2{animation-duration:6.1s;animation-delay:-1.5s}
+.win-3{animation-duration:4.9s;animation-delay:-2.3s}
+.win-4{animation-duration:5.7s;animation-delay:-.7s}
+.win-5{animation-duration:5.2s;animation-delay:-1.9s}
+.win-6{animation-duration:6.4s;animation-delay:-.5s}
+.win-7{animation-duration:4.7s;animation-delay:-2.8s}
+.win-8{animation-duration:5.9s;animation-delay:-1.2s}
+.win-door{animation-duration:5.6s;animation-delay:-.9s}
+.win-adult{animation-duration:6.2s;animation-delay:-2.1s}
+.wave-arm{
+  transform-box:fill-box;transform-origin:50% 85%;
+  animation:makers-wave 1.45s ease-in-out infinite;
+}
+.wave-arm.slow{animation-duration:1.85s;animation-delay:-.45s}
+.kid-eyes{transform-box:fill-box;transform-origin:center;animation:makers-blink 4.6s infinite}
+.eyes-b{animation-delay:-1.3s}
+.eyes-c{animation-delay:-2.4s}
+.eyes-d{animation-delay:-.6s}
+.eyes-e{animation-delay:-1.7s}
+.eyes-f{animation-delay:-3.2s}
+.eyes-g{animation-delay:-.4s}
+.eyes-h{animation-delay:-2.1s}
+.bit{transform-box:fill-box;transform-origin:center;animation:makers-drift 4.4s ease-in-out infinite}
+.plane{transform-box:fill-box;transform-origin:20% 60%;animation:makers-plane 3.6s ease-in-out infinite}
+.book{transform-box:fill-box;transform-origin:center;animation:makers-book 3.3s ease-in-out infinite}
+.leaf{transform-box:fill-box;transform-origin:0% 50%;animation:makers-leaf 3.1s ease-in-out infinite}
+.leaf-b{animation-delay:-.9s}
+.scarf{transform-box:fill-box;transform-origin:80% 70%;animation:makers-leaf 2.8s ease-in-out infinite}
+.flute{transform-box:fill-box;transform-origin:50% 100%;animation:makers-flute 2.4s ease-in-out infinite}
+.tri{transform-box:fill-box;transform-origin:50% 0%;animation:makers-tri 1.8s ease-in-out infinite}
+.ball{transform-box:fill-box;transform-origin:center;animation:makers-ball 2.1s ease-in-out infinite}
+.scope{transform-box:fill-box;transform-origin:0% 50%;animation:makers-leaf 3.2s ease-in-out infinite}
+.wheel{transform-box:fill-box;transform-origin:center;animation:makers-wheel 9s linear infinite}
+@keyframes makers-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes makers-wave{0%,100%{transform:rotate(8deg)}50%{transform:rotate(-28deg)}}
+@keyframes makers-drift{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-11px) rotate(14deg)}}
+@keyframes makers-blink{0%,42%,50%,100%{transform:scaleY(1)}46%{transform:scaleY(.12)}}
+@keyframes makers-plane{0%,100%{transform:translate(0,0) rotate(-14deg)}50%{transform:translate(22px,-14px) rotate(10deg)}}
+@keyframes makers-book{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(-2deg) translateY(-3px)}}
+@keyframes makers-leaf{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(10deg)}}
+@keyframes makers-flute{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(7deg)}}
+@keyframes makers-tri{0%,100%{transform:rotate(8deg)}50%{transform:rotate(-12deg)}}
+@keyframes makers-ball{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes makers-wheel{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){
+  .makers-play *{animation:none !important}
+}
+.toy-play-photo{
+  display:block;
+  width:100%;
+  height:100%;
+  min-height:280px;
+  object-fit:cover;
+}
+@media(max-width:850px){
+  .toy-stage{height:auto}
+  .toy-hero-photo{height:auto}
+  .toy-stage::after{background:linear-gradient(180deg, transparent 45%, rgba(24,86,150,.5))}
+  .toy-hero-copy{
+    position:relative;
+    right:auto;
+    top:auto;
+    bottom:auto;
+    transform:none;
+    width:auto;
+    max-width:none;
+    padding:6px 7% 24px;
+  }
+  .toy-play-photo{min-height:220px}
+  .makers-row{grid-template-columns:1fr}
+  .makers-play{height:auto;min-height:0}
+  .makers-play svg{position:static;height:auto}
+  .makers-frame{width:100%}
+}

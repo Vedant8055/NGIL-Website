@@ -244,3 +244,191 @@ $$('.pillar-image, .story-image, .hero-photo, .region-visual-bg').forEach(el => 
 
   playDance();
 })();
+
+// The pond keeps its ripples. The submarine is one untouched photo, slid as a whole toy:
+// back across the water, a U-turn, and back again.
+(() => {
+  const live = document.querySelector('.scene-live');
+  if (!live) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const img = live.querySelector('img');
+  const start = () => {
+    const w = img.naturalWidth;
+    const h = img.naturalHeight;
+    if (!w || !h) return;
+
+    const canvas = document.createElement('canvas');
+    canvas.className = 'scene-motion';
+    canvas.setAttribute('aria-hidden', 'true');
+    canvas.width = w;
+    canvas.height = h;
+    live.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+
+    const still = document.createElement('canvas');
+    still.width = w;
+    still.height = h;
+    const sctx = still.getContext('2d', { willReadFrequently: true });
+    sctx.drawImage(img, 0, 0);
+    const shot = sctx.getImageData(0, 0, w, h);
+    const pix = shot.data;
+    const orig = new Uint8ClampedArray(pix);
+
+    const shape = [
+      [248, 568], [264, 544], [274, 522], [282, 494], [304, 506], [324, 528],
+      [348, 518], [354, 476], [390, 472], [400, 442], [400, 414], [450, 408],
+      [478, 430], [462, 456], [466, 480], [482, 488], [490, 516], [510, 532],
+      [536, 548], [550, 570], [544, 608], [502, 622], [408, 630], [324, 622],
+      [280, 606], [248, 582]
+    ];
+    const maskCanvas = document.createElement('canvas');
+    maskCanvas.width = w;
+    maskCanvas.height = h;
+    const mctx = maskCanvas.getContext('2d', { willReadFrequently: true });
+    mctx.beginPath();
+    mctx.moveTo(shape[0][0], shape[0][1]);
+    for (let i = 1; i < shape.length; i++) mctx.lineTo(shape[i][0], shape[i][1]);
+    mctx.closePath();
+    mctx.fillStyle = '#fff';
+    mctx.fill();
+    const maskPx = mctx.getImageData(0, 0, w, h).data;
+    const mask = new Uint8Array(w * h);
+    let minX = w;
+    let minY = h;
+    let maxX = 0;
+    let maxY = 0;
+    let count = 0;
+    const subSprite = document.createElement('canvas');
+    subSprite.width = w;
+    subSprite.height = h;
+    const subCtx = subSprite.getContext('2d');
+    const subShot = subCtx.createImageData(w, h);
+    const isWater = (r, g, b) => b > r + 12 && b > 70;
+    for (let y = 410; y < 640; y++) {
+      let right = -1;
+      for (let x = 560; x >= 250; x--) {
+        if (maskPx[(y * w + x) * 4] > 128) { right = x; break; }
+      }
+      for (let x = 250; x < 560; x++) {
+        if (maskPx[(y * w + x) * 4] <= 128) continue;
+        const p = y * w + x;
+        mask[p] = 1;
+        count++;
+        if (x < minX) minX = x;
+        if (y < minY) minY = y;
+        if (x > maxX) maxX = x;
+        if (y > maxY) maxY = y;
+        const i = p * 4;
+        subShot.data[i] = orig[i];
+        subShot.data[i + 1] = orig[i + 1];
+        subShot.data[i + 2] = orig[i + 2];
+        subShot.data[i + 3] = 255;
+        let sx = 734 + ((x * 5) % 58);
+        let sy = 592 + ((y * 3) % 58);
+        if (y < 540 && right > 0) {
+          sx = Math.min(w - 1, right + 4 + ((x + y) % 10));
+          sy = y;
+        }
+        const si = (sy * w + sx) * 4;
+        const sampled = [orig[si], orig[si + 1], orig[si + 2]];
+        const fill = y < 540 || isWater(sampled[0], sampled[1], sampled[2])
+          ? sampled
+          : [58, 118, 134];
+        pix[i] = fill[0];
+        pix[i + 1] = fill[1];
+        pix[i + 2] = fill[2];
+      }
+    }
+    if (count < 800) {
+      canvas.remove();
+      return;
+    }
+    subCtx.putImageData(subShot, 0, 0);
+    sctx.putImageData(shot, 0, 0);
+
+    const pivotX = (minX + maxX) / 2;
+    const pivotY = (minY + maxY) / 2;
+    const pond = { cx: 470, cy: 648, rx: 290, ry: 86 };
+    const trip = 8.4;
+    const reach = 70;
+    const ease = (p) => p * p * (3 - 2 * p);
+    let running = true;
+    const draw = (now) => {
+      if (!running) return;
+      const t = now / 1000;
+      const u = (t % trip) / trip;
+      let travel = 0;
+      let face = 1;
+      if (u < 0.46) {
+        travel = ease(u / 0.46) * reach;
+        face = 1;
+      } else if (u < 0.5) {
+        travel = reach;
+        face = -1;
+      } else if (u < 0.96) {
+        travel = (1 - ease((u - 0.5) / 0.46)) * reach;
+        face = -1;
+      } else {
+        travel = 0;
+        face = 1;
+      }
+      const bob = Math.sin(t * 1.5) * 2.5;
+
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, w, h);
+      ctx.drawImage(still, 0, 0);
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.ellipse(pond.cx, pond.cy, pond.rx, pond.ry, -0.08, 0, Math.PI * 2);
+      ctx.clip();
+      for (let y = pond.cy - pond.ry; y < pond.cy + pond.ry; y++) {
+        const yy = Math.floor(y);
+        const dx = Math.sin(yy * 0.055 + t * 1.7) * 11 + Math.sin(yy * 0.11 - t * 1.2) * 6.2;
+        ctx.drawImage(still, 0, yy, w, 1, dx, yy, w, 1);
+      }
+      ctx.globalCompositeOperation = 'soft-light';
+      const shine = pond.cx - 80 + Math.sin(t * 0.7) * 80;
+      const grad = ctx.createLinearGradient(shine, pond.cy - 36, shine + 140, pond.cy + 40);
+      grad.addColorStop(0, 'rgba(255,255,255,0)');
+      grad.addColorStop(0.5, 'rgba(255,255,255,0.38)');
+      grad.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(pond.cx - pond.rx, pond.cy - pond.ry, pond.rx * 2, pond.ry * 2);
+      ctx.restore();
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.ellipse(pond.cx, pond.cy, pond.rx, pond.ry, -0.08, 0, Math.PI * 2);
+      ctx.clip();
+      ctx.strokeStyle = 'rgba(255,255,255,0.55)';
+      ctx.lineWidth = 1.8;
+      for (let ring = 0; ring < 3; ring++) {
+        const p = (t * 0.38 + ring / 3) % 1;
+        ctx.globalAlpha = (1 - p) * 0.6;
+        ctx.beginPath();
+        ctx.ellipse(600, 668, 16 + p * 110, 6 + p * 22, -0.12, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+      ctx.restore();
+
+      ctx.save();
+      ctx.translate(pivotX + travel, pivotY + bob);
+      ctx.scale(face, 1);
+      ctx.drawImage(subSprite, -pivotX, -pivotY);
+      ctx.restore();
+
+      requestAnimationFrame(draw);
+    };
+    requestAnimationFrame(draw);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) running = false;
+      else if (!running) {
+        running = true;
+        requestAnimationFrame(draw);
+      }
+    });
+  };
+  if (img.complete && img.naturalWidth) start();
+  else img.addEventListener('load', start, { once: true });
+})();
